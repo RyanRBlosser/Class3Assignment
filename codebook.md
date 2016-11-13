@@ -1,6 +1,71 @@
 # Class 3 Assignment Codebook
 Class 3 Assignment Codebook
 
+
+Variables in final dataset:
+
+subject -- A subject number 1 through 30 signifying the person the device is to (each number is a different person)
+
+activity -- the observed activity the subject is performing, which takes one of six values (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING)
+
+the other variables are made up of three components and take the nomenaclature of <Comp1>_<Comp2><Comp3>
+note that ALL of these are means that were gotten by taking the mean of every observation per subject per activity:
+
+
+Component 1 list -- these are the basic measurements taken
+
+tBodyAcc
+
+tGravityAcc
+
+tBodyAccJerk
+
+tBodyGyro
+
+tBodyGyroJerk
+
+tBodyAccMag
+
+tGravityAccMag
+
+tBodyAccJerkMag
+
+tBodyGyroMag
+
+tBodyGyroJerkMag
+
+fBodyAcc
+
+fBodyAccJerk
+
+fBodyGyro
+
+fBodyAccMag
+
+fBodyBodyAccJerkMag
+
+fBodyBodyGyroMag
+
+fBodyBodyGyroJerkMag
+
+
+
+Component 2 list
+
+mean -- this is the mean of the measurement in an observation
+
+std -- this is the standard deviation of the measurements in an observation
+
+
+
+Component 3 list
+
+_X, _Y, _Z, or <nothing> --if there is an applicable direction for a measurement, the variable has one of these, otherwise there is no third component
+
+
+
+
+
 How the data set was constructed:
 1) Take the test files (subject_test, y_test, x_test) as combine them "vertically" (cbind)
 and append to them (rbind) the train files (suject_train, y_train, x_train)...this results in a large, wide data frame
@@ -22,36 +87,3 @@ to a factor variable with the levels being the second column of this data frame.
 12) Create a new data frame from the main data frame using ddply with three arguments: the data frame, the two columns at the left of the data frame (subject and activity) and using numcolwise(mean).
 numcolwise will perform the computation (in this case the mean) on each individual column in the data frame not included in the second argument.  This is how to get the mean from every column on a per subject, per activity basis.
 13) Write data table to file
-
-Variables in final dataset:
-
-subject -- A subject number 1 through 30 signifying the person the device is to (each number is a different person)
-activity -- the observed activity the subject is performing, which takes one of six values (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING)
-
-the other variables are made up of three components and take the nomenaclature of <Comp1>_<Comp2><Comp3>
-note that ALL of these are means that were gotten by taking the mean of every observation per subject per activity:
-Component 1 list -- these are the basic measurements taken
-tBodyAcc
-tGravityAcc
-tBodyAccJerk
-tBodyGyro
-tBodyGyroJerk
-tBodyAccMag
-tGravityAccMag
-tBodyAccJerkMag
-tBodyGyroMag
-tBodyGyroJerkMag
-fBodyAcc
-fBodyAccJerk
-fBodyGyro
-fBodyAccMag
-fBodyBodyAccJerkMag
-fBodyBodyGyroMag
-fBodyBodyGyroJerkMag
-
-Component 2 list
-mean -- this is the mean of the measurement in an observation
-std -- this is the standard deviation of the measurements in an observation
-
-Component 3 list
-_X, _Y, _Z, or <nothing> --if there is an applicable direction for a measurement, the variable has one of these, otherwise there is no third component
